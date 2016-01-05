@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.widget.ListView;
 
 import com.namleesin.smartalert.R;
@@ -41,6 +42,7 @@ public class TimeLineActivity extends FragmentActivity implements LoaderManager.
         if(type == TYPE_PACKAGE)
         {
             param = intent.getStringExtra(TIMELINE_PKG);
+            Log.d("NJ LEE", "param : " + param);
             queryType = DBValue.TYPE_SELECT_PACKAGE_INFO;
         }
 
@@ -59,6 +61,7 @@ public class TimeLineActivity extends FragmentActivity implements LoaderManager.
 
     @Override
     public void onLoadFinished(Loader<ArrayList<TimelineData>> loader, ArrayList<TimelineData> data) {
+        Log.d("NJ LEE", "data : "+data);
         if(data != null && data.size() > 0)
         {
             mAdapter.setData(data);
